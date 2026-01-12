@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orchids",
+  "info": {
+    "singularName": "orchid",
+    "pluralName": "orchids",
+    "displayName": "orchid"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "history": {
+      "type": "string"
+    },
+    "characteristics": {
+      "type": "text"
+    },
+    "origin": {
+      "type": "string"
+    },
+    "breeder": {
+      "type": "string",
+      "default": "中国兰花博览园"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "orchid_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::orchid-category.orchid-category",
+      "inversedBy": "orchids"
+    },
+    "orchid_types": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::orchid-type.orchid-type",
+      "inversedBy": "orchids"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orchid_categories",
+  "info": {
+    "singularName": "orchid-category",
+    "pluralName": "orchid-categories",
+    "displayName": "orchid-category"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "orchids": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::orchid.orchid",
+      "mappedBy": "orchid_category"
+    }
+  }
+}
