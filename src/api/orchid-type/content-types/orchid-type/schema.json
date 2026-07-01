@@ -22,6 +22,9 @@
       "relation": "manyToMany",
       "target": "api::orchid.orchid",
       "mappedBy": "orchid_types"
+    },
+    "order": {
+      "type": "integer"
     }
   }
 }
