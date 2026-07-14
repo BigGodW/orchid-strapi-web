@@ -4,7 +4,7 @@
   "info": {
     "singularName": "orchid",
     "pluralName": "orchids",
-    "displayName": "orchid"
+    "displayName": "兰花"
   },
   "options": {
     "draftAndPublish": false
@@ -48,6 +48,9 @@
       "relation": "manyToMany",
       "target": "api::orchid-type.orchid-type",
       "inversedBy": "orchids"
+    },
+    "price": {
+      "type": "integer"
     }
   }
 }

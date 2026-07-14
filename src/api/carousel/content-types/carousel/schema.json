@@ -4,7 +4,7 @@
   "info": {
     "singularName": "carousel",
     "pluralName": "carousels",
-    "displayName": "carousel"
+    "displayName": "轮播图"
   },
   "options": {
     "draftAndPublish": false
@@ -18,7 +18,7 @@
       "type": "boolean",
       "default": true
     },
-    "path": {
+    "url": {
       "type": "string"
     },
     "img": {
@@ -30,6 +30,10 @@
     },
     "order": {
       "type": "integer"
+    },
+    "groupKey": {
+      "type": "string",
+      "required": true
     }
   }
 }

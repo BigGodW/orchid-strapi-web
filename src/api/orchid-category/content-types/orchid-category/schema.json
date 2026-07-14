@@ -4,7 +4,7 @@
   "info": {
     "singularName": "orchid-category",
     "pluralName": "orchid-categories",
-    "displayName": "orchid-category"
+    "displayName": "兰花分类"
   },
   "options": {
     "draftAndPublish": false
@@ -25,6 +25,19 @@
     },
     "order": {
       "type": "integer"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "icon": {
+      "type": "string"
     }
   }
 }

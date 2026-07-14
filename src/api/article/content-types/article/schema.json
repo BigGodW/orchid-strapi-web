@@ -4,7 +4,7 @@
   "info": {
     "singularName": "article",
     "pluralName": "articles",
-    "displayName": "article"
+    "displayName": "文章"
   },
   "options": {
     "draftAndPublish": false
@@ -14,11 +14,8 @@
     "title": {
       "type": "string"
     },
-    "main": {
+    "content": {
       "type": "richtext"
-    },
-    "description": {
-      "type": "text"
     },
     "isTop": {
       "type": "boolean",
@@ -30,6 +27,34 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "summary": {
+      "type": "text"
+    },
+    "publishDate": {
+      "type": "datetime"
+    },
+    "sort": {
+      "type": "integer"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::article-category.article-category",
+      "inversedBy": "articles"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article-tag.article-tag",
+      "inversedBy": "articles"
+    },
+    "isShow": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

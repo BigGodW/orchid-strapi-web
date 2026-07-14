@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "article_categories",
+  "info": {
+    "singularName": "article-category",
+    "pluralName": "article-categories",
+    "displayName": "文章分类"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "sort": {
+      "type": "integer",
+      "default": 0
+    },
+    "isShow": {
+      "type": "boolean",
+      "default": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "icon": {
+      "type": "string"
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article",
+      "mappedBy": "category"
+    }
+  }
+}

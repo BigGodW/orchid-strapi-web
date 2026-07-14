@@ -430,10 +430,79 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiArticleCategoryArticleCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'article_categories';
+  info: {
+    displayName: '\u6587\u7AE0\u5206\u7C7B';
+    pluralName: 'article-categories';
+    singularName: 'article-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    isShow: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::article-category.article-category'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    sort: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiArticleTagArticleTag extends Struct.CollectionTypeSchema {
+  collectionName: 'article_tags';
+  info: {
+    displayName: '\u6587\u7AE0\u6807\u7B7E';
+    pluralName: 'article-tags';
+    singularName: 'article-tag';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    icon: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::article-tag.article-tag'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   collectionName: 'articles';
   info: {
-    displayName: 'article';
+    displayName: '\u6587\u7AE0';
     pluralName: 'articles';
     singularName: 'article';
   };
@@ -441,11 +510,17 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    category: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::article-category.article-category'
+    >;
+    content: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     img: Schema.Attribute.Media<'images'>;
+    isShow: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     isTop: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -453,8 +528,14 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
       'api::article.article'
     > &
       Schema.Attribute.Private;
-    main: Schema.Attribute.RichText;
+    publishDate: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
+    sort: Schema.Attribute.Integer;
+    summary: Schema.Attribute.Text;
+    tags: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::article-tag.article-tag'
+    >;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -465,7 +546,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
 export interface ApiCarouselCarousel extends Struct.CollectionTypeSchema {
   collectionName: 'carousels';
   info: {
-    displayName: 'carousel';
+    displayName: '\u8F6E\u64AD\u56FE';
     pluralName: 'carousels';
     singularName: 'carousel';
   };
@@ -476,6 +557,7 @@ export interface ApiCarouselCarousel extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    groupKey: Schema.Attribute.String & Schema.Attribute.Required;
     img: Schema.Attribute.Media<'images'>;
     isShow: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -485,12 +567,12 @@ export interface ApiCarouselCarousel extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     order: Schema.Attribute.Integer;
-    path: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    url: Schema.Attribute.String;
   };
 }
 
@@ -498,7 +580,7 @@ export interface ApiOrchidCategoryOrchidCategory
   extends Struct.CollectionTypeSchema {
   collectionName: 'orchid_categories';
   info: {
-    displayName: 'orchid-category';
+    displayName: '\u5170\u82B1\u5206\u7C7B';
     pluralName: 'orchid-categories';
     singularName: 'orchid-category';
   };
@@ -510,6 +592,8 @@ export interface ApiOrchidCategoryOrchidCategory
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    icon: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -529,7 +613,7 @@ export interface ApiOrchidCategoryOrchidCategory
 export interface ApiOrchidTypeOrchidType extends Struct.CollectionTypeSchema {
   collectionName: 'orchid_types';
   info: {
-    displayName: 'orchid-type';
+    displayName: '\u5170\u82B1\u7C7B\u578B';
     pluralName: 'orchid-types';
     singularName: 'orchid-type';
   };
@@ -541,6 +625,8 @@ export interface ApiOrchidTypeOrchidType extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    icon: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -560,7 +646,7 @@ export interface ApiOrchidTypeOrchidType extends Struct.CollectionTypeSchema {
 export interface ApiOrchidOrchid extends Struct.CollectionTypeSchema {
   collectionName: 'orchids';
   info: {
-    displayName: 'orchid';
+    displayName: '\u5170\u82B1';
     pluralName: 'orchids';
     singularName: 'orchid';
   };
@@ -593,6 +679,7 @@ export interface ApiOrchidOrchid extends Struct.CollectionTypeSchema {
       'api::orchid-type.orchid-type'
     >;
     origin: Schema.Attribute.String;
+    price: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1141,6 +1228,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::article-category.article-category': ApiArticleCategoryArticleCategory;
+      'api::article-tag.article-tag': ApiArticleTagArticleTag;
       'api::article.article': ApiArticleArticle;
       'api::carousel.carousel': ApiCarouselCarousel;
       'api::orchid-category.orchid-category': ApiOrchidCategoryOrchidCategory;
