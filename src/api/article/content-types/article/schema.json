@@ -17,6 +17,10 @@
     "content": {
       "type": "richtext"
     },
+    "isShow": {
+      "type": "boolean",
+      "default": true
+    },
     "isTop": {
       "type": "boolean",
       "default": false
@@ -34,9 +38,6 @@
     "summary": {
       "type": "text"
     },
-    "publishDate": {
-      "type": "datetime"
-    },
     "sort": {
       "type": "integer"
     },
@@ -51,10 +52,6 @@
       "relation": "manyToMany",
       "target": "api::article-tag.article-tag",
       "inversedBy": "articles"
-    },
-    "isShow": {
-      "type": "boolean",
-      "default": true
     }
   }
 }

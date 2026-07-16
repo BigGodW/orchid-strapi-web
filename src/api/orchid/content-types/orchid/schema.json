@@ -14,8 +14,30 @@
     "name": {
       "type": "string"
     },
+    "orchid_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::orchid-category.orchid-category",
+      "inversedBy": "orchids"
+    },
+    "orchid_types": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::orchid-type.orchid-type",
+      "inversedBy": "orchids"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "description": {
       "type": "text"
+    },
+    "price": {
+      "type": "integer"
     },
     "history": {
       "type": "string"
@@ -29,28 +51,6 @@
     "breeder": {
       "type": "string",
       "default": "中国兰花博览园"
-    },
-    "images": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "orchid_category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::orchid-category.orchid-category",
-      "inversedBy": "orchids"
-    },
-    "orchid_types": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::orchid-type.orchid-type",
-      "inversedBy": "orchids"
-    },
-    "price": {
-      "type": "integer"
     }
   }
 }

@@ -528,7 +528,6 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
       'api::article.article'
     > &
       Schema.Attribute.Private;
-    publishDate: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
     sort: Schema.Attribute.Integer;
     summary: Schema.Attribute.Text;
@@ -710,6 +709,7 @@ export interface ApiWebsiteWebsite extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     logo: Schema.Attribute.Media<'images'>;
+    menulist: Schema.Attribute.JSON;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
