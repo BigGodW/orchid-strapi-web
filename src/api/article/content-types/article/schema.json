@@ -34,9 +34,6 @@
     "summary": {
       "type": "text"
     },
-    "publishDate": {
-      "type": "datetime"
-    },
     "sort": {
       "type": "integer"
     },

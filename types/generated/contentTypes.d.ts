@@ -528,7 +528,6 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
       'api::article.article'
     > &
       Schema.Attribute.Private;
-    publishDate: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
     sort: Schema.Attribute.Integer;
     summary: Schema.Attribute.Text;
@@ -690,7 +689,7 @@ export interface ApiOrchidOrchid extends Struct.CollectionTypeSchema {
 export interface ApiWebsiteWebsite extends Struct.SingleTypeSchema {
   collectionName: 'websites';
   info: {
-    displayName: 'website';
+    displayName: '\u7F51\u7AD9\u4FE1\u606F';
     pluralName: 'websites';
     singularName: 'website';
   };
@@ -710,6 +709,7 @@ export interface ApiWebsiteWebsite extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     logo: Schema.Attribute.Media<'images'>;
+    menulist: Schema.Attribute.JSON;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2026-07-16T15:34:32.571Z"
+    "x-generation-date": "2026-07-17T02:57:24.583Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -24,7 +24,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:1338/api",
+      "url": "http://localhost:1337/api",
       "description": "Development server"
     }
   ],
@@ -5390,10 +5390,6 @@
               "summary": {
                 "type": "string"
               },
-              "publishDate": {
-                "type": "string",
-                "format": "date-time"
-              },
               "sort": {
                 "type": "integer"
               },
@@ -6103,10 +6099,6 @@
           "summary": {
             "type": "string"
           },
-          "publishDate": {
-            "type": "string",
-            "format": "date-time"
-          },
           "sort": {
             "type": "integer"
           },
@@ -6417,10 +6409,6 @@
                     },
                     "summary": {
                       "type": "string"
-                    },
-                    "publishDate": {
-                      "type": "string",
-                      "format": "date-time"
                     },
                     "sort": {
                       "type": "integer"
@@ -7731,10 +7719,6 @@
                 },
                 "summary": {
                   "type": "string"
-                },
-                "publishDate": {
-                  "type": "string",
-                  "format": "date-time"
                 },
                 "sort": {
                   "type": "integer"
@@ -9166,10 +9150,6 @@
                 },
                 "summary": {
                   "type": "string"
-                },
-                "publishDate": {
-                  "type": "string",
-                  "format": "date-time"
                 },
                 "sort": {
                   "type": "integer"
@@ -15105,6 +15085,7 @@
                 ],
                 "example": "string or id"
               },
+              "menulist": {},
               "locale": {
                 "type": "string"
               },
@@ -15777,6 +15758,7 @@
               }
             }
           },
+          "menulist": {},
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -15963,6 +15945,7 @@
                     }
                   }
                 },
+                "menulist": {},
                 "createdAt": {
                   "type": "string",
                   "format": "date-time"
